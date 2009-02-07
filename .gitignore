@@ -1,2 +1,5 @@
 .sconsign.dblite
+.*.swp
+*.o
+rbm_test
 *.ignore

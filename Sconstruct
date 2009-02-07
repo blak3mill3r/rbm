@@ -3,5 +3,5 @@ import os
 env = Environment(ENV = os.environ)
 env.AppendENVPath('INCLUDE', './')
 
-env.Program(target = 'rbmpl_test', source = ["rbmpl_test.cpp"], LIBS = ['stdc++'])
+env.Program(target = 'rbm_test', source = ["rbm_test.cpp"], LIBS = ['stdc++'])
 

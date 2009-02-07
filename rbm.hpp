@@ -17,6 +17,7 @@
  */
 
 #include <iostream>
+#include <math.h>
 
 using std::cout;
 using std::endl;
@@ -25,6 +26,15 @@ namespace rbm {
 
 typedef float weight_t;
 typedef unsigned int uint;
+
+float sigmoid_immediate( float x )
+{
+  float a = pow(M_E, -x);         // M_E is e, the base of natural logarithms
+  return ( 1 / ( 1 + a ) );       // the function is f(x) = 1 / (1 + e^-x)
+}
+
+float sigmoid( float x )
+{ return sigmoid_immediate( x ); }
 
 template <class ActivationType>
 class Neuron
@@ -138,7 +148,7 @@ class RBM       // Restricted Boltzman Majigger
 
     // for one neuron in our upper level
     // activate according to its inputs from the lower level
-    inline void perception_step( uint upper_neuron_id )
+    inline void upward_activation_step( uint upper_neuron_id )
     {
       static weight_t sum = 0;
       uint lower_neuron_id = 0, weight_id = upper_neuron_id * num_lower_neurons;
@@ -146,12 +156,12 @@ class RBM       // Restricted Boltzman Majigger
       while(lower_neuron_id < num_lower_neurons)
         sum += lower->neurons[lower_neuron_id++] * weights[weight_id++];
       
-      //upper->neurons[ upper_neuron_id ].activation = sigmoid( sum );
+      upper->neurons[ upper_neuron_id ].activation = sigmoid( sum );
     }
 
     // for one neuron in our lower level
     // activate according to its outputs from the higher level
-    inline void imagination_step( uint lower_neuron_id )
+    inline void downward_activation_step( uint lower_neuron_id )
     {
       static weight_t sum = 0;
       uint upper_neuron_id = 0, weight_id = lower_neuron_id;
@@ -162,7 +172,7 @@ class RBM       // Restricted Boltzman Majigger
         weight_id += num_lower_neurons;
       }
 
-      //lower->connectable_neurons()->neurons[ lower_neuron_id ].activation = sigmoid( sum );
+      lower->connectable_neurons()->neurons[ lower_neuron_id ].activation = sigmoid( sum );
     }
 
 };
