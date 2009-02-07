@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  rbmpl.hpp
+ *       Filename:  rbm.hpp
  *
  *    Description   RBMPL main include file
  *
@@ -21,7 +21,7 @@
 using std::cout;
 using std::endl;
 
-namespace rbmpl {
+namespace rbm {
 
 typedef float weight_t;
 typedef unsigned int uint;
@@ -167,4 +167,4 @@ class RBM       // Restricted Boltzman Majigger
 
 };
 
-} // end namespace rbmpl
+} // end namespace rbm

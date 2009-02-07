@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  rbmpl_test.cpp
+ *       Filename:  rbm_test.cpp
  *
  *    Description:  simple test for RBMPL
  *
@@ -18,9 +18,9 @@
 
 #include <jack/jack.h>
 #include <iostream>
-#include "rbmpl.hpp"
+#include "rbm.hpp"
 
-using namespace rbmpl;
+using namespace rbm;
 
 using std::cout;
 using std::endl;
