@@ -1,0 +1,7 @@
+RBM
+
+A library for implementing Restricted Boltzmann Machines.
+
+Goals:
+
+* using boost::mpl, make a sort of DSL for training and using RBMs, independent of data types
